@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <span>BE Template (front)</span>
+  <span class="spacer"></span>
+  <button routerLink="contracts" mat-raised-button color="secondary">Contracts</button>&nbsp;&nbsp;
+  <button routerLink="find-contract" mat-raised-button color="secondary">Find contract</button>&nbsp;&nbsp;
+  <button routerLink="jobs-unpaid" mat-raised-button color="secondary">Jobs unpaid</button>&nbsp;&nbsp;
+  <button routerLink="pay-job" mat-raised-button color="secondary">Pay job</button>&nbsp;&nbsp;&nbsp;
+  <button routerLink="balance" mat-raised-button color="secondary">Deposit</button>&nbsp;&nbsp;
+  <button routerLink="admin/find-best-profession" mat-raised-button color="secondary">Best profession (Admin only)</button>&nbsp;&nbsp;
+  <button routerLink="admin/find-best-clients" mat-raised-button color="secondary">Best clients (Admin only)</button>
+</mat-toolbar>
+
+<hr/>
+
+<mat-form-field appearance="fill">
+  <mat-label>Using app as:</mat-label>
+  <mat-select class="mat-select-content" (selectionChange)="changeProfile($event)">
+    <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+      {{ profile.firstName + ' ' + profile.lastName}} ({{profile.type | uppercase}})
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Deposit target:</mat-label>
+  <mat-select class="mat-select-content" (selectionChange)="changeTargetProfile($event)">
+    <mat-option *ngFor="let profile of profiles" [value]="profile.id">
+      {{ profile.firstName + ' ' + profile.lastName}} ({{profile.type | uppercase}})
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<router-outlet></router-outlet>

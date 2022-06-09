@@ -1,0 +1,21 @@
+<h1>Get jobs unpaid</h1>
+<hr>
+<span *ngIf="!api.profile_id">You must first choose a profile id in the above selector</span>
+<button (click)="getJobsUnpaid()" [disabled]="!api.profile_id" mat-raised-button color="secondary">
+  Click here to retrieve jobs unpaid
+</button>
+
+<table *ngIf="jobs?.length">
+  <thead>
+  <th>ID</th>
+  <th>Desc.</th>
+  <th>Price</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let job of jobs">
+    <td>{{ job.id}}</td>
+    <td>{{ job.description}}</td>
+    <td>{{ job.price}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+<h1>Find a contract</h1>
+<hr>
+<span *ngIf="!api.profile_id">You must first choose a profile id in the above selector</span>
+<ng-container *ngIf="api.profile_id">
+  <input type="text" #contractId placeholder="enter a contract id..."/><br/>
+  <button (click)="findContract(contractId.value)" [disabled]="!api.profile_id" mat-raised-button color="secondary">
+    Find contract id {{contractId.value}}
+  </button>
+
+  <table *ngIf="contract">
+    <thead>
+    <th>ID</th>
+    <th>Terms</th>
+    <th>Status</th>
+    <th>Created at</th>
+    <th>Client</th>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ contract.id}}</td>
+      <td>{{ contract.terms}}</td>
+      <td>{{ contract.status}}</td>
+      <td>{{ contract.createdAt | date: 'medium'}}</td>
+      <td>{{ contract.Client.firstName + ' ' + contract.Client.lastName }} ({{contract.Client.type}})</td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>

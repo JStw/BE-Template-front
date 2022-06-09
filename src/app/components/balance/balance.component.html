@@ -1,0 +1,10 @@
+<h1>Balance & Deposit</h1>
+<hr>
+<span *ngIf="!api.profile_id">You must first choose a profile id in the above selector</span>
+<span *ngIf="!api.profile_selected_id">You must first choose a target profile id in the above selector</span>
+<ng-container *ngIf="api.profile_id && api.profile_selected_id">
+  <input type="text" #amount placeholder="enter an amout id..."/><br/>
+  <button (click)="deposit(amount.value)" [disabled]="!api.profile_id" mat-raised-button color="secondary">
+    Pay {{amount.value}} to user targeted
+  </button>
+</ng-container>

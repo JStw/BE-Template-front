@@ -1,0 +1,25 @@
+<h1>Get contracts</h1>
+<hr>
+<span *ngIf="!api.profile_id">You must first choose a profile id in the above selector</span>
+<button (click)="getContracts()" [disabled]="!api.profile_id" mat-raised-button color="secondary">
+  Click here to retrieve contracts
+</button>
+
+<table *ngIf="contracts?.length">
+  <thead>
+  <th>ID</th>
+  <th>Terms</th>
+  <th>Status</th>
+  <th>Created at</th>
+  <th>Client</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contract of contracts">
+    <td>{{ contract.id}}</td>
+    <td>{{ contract.terms}}</td>
+    <td>{{ contract.status}}</td>
+    <td>{{ contract.createdAt | date: 'medium'}}</td>
+    <td>{{ contract.Client.firstName + ' ' + contract.Client.lastName }} ({{contract.Client.type}})</td>
+  </tr>
+  </tbody>
+</table>

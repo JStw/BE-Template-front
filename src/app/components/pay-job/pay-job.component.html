@@ -1,0 +1,9 @@
+<h1>Pay a job</h1>
+<hr>
+<span *ngIf="!api.profile_id">You must first choose a profile id in the above selector</span>
+<ng-container *ngIf="api.profile_id">
+  <input type="text" #jobId placeholder="enter a job id..."/><br/>
+  <button (click)="payJob(jobId.value)" [disabled]="!api.profile_id" mat-raised-button color="secondary">
+    Pay job id {{jobId.value}}
+  </button>
+</ng-container>

@@ -1,0 +1,26 @@
+<h1>Find the best clients</h1>
+<hr>
+<span *ngIf="!api.profile_id">You must first choose a profile id in the above selector</span>
+<ng-container *ngIf="api.profile_id">
+  <input type="text" #start placeholder="enter a start date (YYYY-MM-DD)..."/><br/>
+  <input type="text" #end placeholder="enter a end date (YYYY-MM-DD)..."/><br/>
+  <input type="text" #limit placeholder="enter a end date (YYYY-MM-DD)..."/><br/>
+  <button (click)="findBestClients(start.value, end.value, limit.value || '2')" [disabled]="!api.profile_id" mat-raised-button color="secondary">
+    Find best clients from {{ start.value}} to {{ end.value }}
+  </button>
+
+  <table *ngIf="clients.length">
+    <thead>
+    <th>ID</th>
+    <th>Full name</th>
+    <th>Amount paid</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.id}}</td>
+      <td>{{ client.fullName}}</td>
+      <td>{{ client.paid}}</td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
